@@ -10,6 +10,7 @@ import { saveToken } from "../../redux/slices/token";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import {useState} from "react";
 
 const Login = () => {
   const mobile = useSelector((state) => state.mobile);
@@ -18,6 +19,7 @@ const Login = () => {
   const navigation = useNavigation("");
   const dispatcher = useDispatch();
   const notify = (text) => toast(text);
+
 
   const save = async () => {
     setDisable(true);
@@ -38,11 +40,14 @@ const Login = () => {
           if (response.status === 202) {
             navigation("/dashboard");
             setDisable(false);
-            dispatcher(saveToken(response.data));
+            // console.log(dispatcher(saveToken(response.data)))
+            const token = response.data.token_type + " " + response.data.token;
+            localStorage.setItem('token' , JSON.stringify(token))
           } else {
             setDisable(false);
             navigation("/register");
-            dispatcher(saveToken(response.data));
+            const token = response.data.token_type + " " + response.data.token;
+            localStorage.setItem('token' , JSON.stringify(token))
           }
         })
         .catch((error) => {

@@ -1,10 +1,9 @@
 import DashboardHeader from "./dashboardHeader";
 import SearchChat from "./search";
-import { Container, Row, Col } from "reactstrap";
-import {MDBBtn, MDBCollapse} from "mdb-react-ui-kit";
+import { Row, Col } from "reactstrap";
 import React from "react";
 import Sidebar from "./sidebar";
-import {useSelector} from "react-redux";
+import {useSelector } from "react-redux";
 import Header from "../../base/loginHeader";
 import Footer from "../../base/loginFooter";
 
@@ -12,20 +11,23 @@ import Footer from "../../base/loginFooter";
 const Dashboard = () => {
 
   const darkMode = useSelector((state) => state.dark);
+  // const users = useSelector((state) => state.user);
+
   return (
     <>
       <DashboardHeader />
 
 
         <Row className={darkMode ? "app dark-mode-list" : "app"}>
-          <Col  md={9} sm={12}>
-            <Header />
+          <Header />
+          <Col  xs={9} >
+
             <div className={darkMode ? "chat dark-mode-chat" : "chat"}>
             چت مخاطب
             </div>
-            <Footer />
+
           </Col>
-          <Col  md={3} sm={12}>
+          <Col  xs={3} >
             <Row>
               <Col md={10}>
                 <SearchChat />
@@ -35,8 +37,10 @@ const Dashboard = () => {
               </Col>
             </Row>
 
+
             {/*<div className="chat-list"> چاپ شدن لیست چت مخاطب</div>*/}
           </Col>
+          <Footer />
         </Row>
 
 

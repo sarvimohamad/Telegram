@@ -294,3 +294,13 @@ input:checked + .slider:before {
 .light-txt{
   color: #cccccc;
 }
+.special_modal{
+  modal-content{
+    background-color: #f6f4f4;
+    color: #000000;
+    cursor: pointer;
+  }
+  input{
+    cursor: pointer;
+  }
+}

@@ -5,13 +5,13 @@ const ImgUpload = () => {
 
     const myRef = useRef("")
     const [upload , setUpload] = useState("")
-    console.log(myRef)
+
 
     const onSubmit = (e) => {
         e.preventDefault()
         let formData = new FormData();
         formData.append('image' , upload);
-        console.log(upload)
+
         setUpload(myRef.current.click())
     }
 
